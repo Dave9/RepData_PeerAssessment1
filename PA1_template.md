@@ -233,7 +233,7 @@ Seprating the data between weekdays and weekends shows some differences in the s
     library(dplyr)
     library(chron)
     df2$daytype <- factor(is.weekend(df2$date), levels=c(FALSE, TRUE), 
-                          labels=c('weekend', 'weekday'))
+                          labels=c('weekday', 'weekend'))
     group_by(df2, daytype, interval) %>% summarize(steps = mean(steps, na.rm=TRUE))-> activity2.int
     p <- qplot(interval, steps, data = activity2.int, geom = "line", 
                facets = daytype ~ .)
